@@ -1,5 +1,6 @@
 package br.com.webflux.controller;
 
+import br.com.webflux.model.CarroModel;
 import br.com.webflux.service.WebFluxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,10 +12,10 @@ public class WebFluxController {
     @Autowired
     private WebFluxService webFluxService;
 
-    @RequestMapping(method =  RequestMethod.GET, value = "")
+    @RequestMapping(method =  RequestMethod.GET, value = "/placa/{placa}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @CrossOrigin(origins = "*")
-    public void buscarCarros(){
-
+    public CarroModel buscarCarro(@PathVariable("placa") String placa){
+        return webFluxService.buscarCarroPorID(placa);
     }
 }
