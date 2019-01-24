@@ -13,9 +13,9 @@ public class WebFluxController {
     private WebFluxService webFluxService;
 
     @RequestMapping(method =  RequestMethod.GET, value = "/placa/{placa}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
     @CrossOrigin(origins = "*")
     public CarroModel buscarCarro(@PathVariable("placa") String placa){
-        return webFluxService.buscarCarroPorID(placa);
+        return webFluxService.buscarCarroPorPlaca(placa);
     }
 }
